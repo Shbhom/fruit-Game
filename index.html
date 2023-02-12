@@ -73,22 +73,22 @@ canvas {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw basket
-            ctx.drawImage(basketImage, basketX, basketY, 100, 100);
+            ctx.drawImage(basketImage, basketX, basketY, 200, 200);
 
             // Draw fruits
             ctx.fillStyle = 'red';
-            ctx.fillRect(fruitX, fruitY, 30, 30);
+            ctx.fillRect(fruitX, fruitY, 50, 50);
             ctx.fillStyle = 'green';
-            ctx.fillRect(fruit2X, fruit2Y, 30, 30);
+            ctx.fillRect(fruit2X, fruit2Y, 50, 50);
             ctx.fillStyle = 'yellow';
-            ctx.fillRect(fruit3X, fruit3Y, 30, 30);
+            ctx.fillRect(fruit3X, fruit3Y, 50, 50);
 
             // Draw obstacles
             let obstacleImage = new Image();
             obstacleImage.src = 'obstacle.png';
-            ctx.drawImage(obstacleImage, obstacleX, obstacleY, 30, 30);
-            ctx.drawImage(obstacleImage, obstacle2X, obstacle2Y, 30, 30);
-            ctx.drawImage(obstacleImage, obstacle3X, obstacle3Y, 30, 30);
+            ctx.drawImage(obstacleImage, obstacleX, obstacleY, 50, 50);
+            ctx.drawImage(obstacleImage, obstacle2X, obstacle2Y, 50, 50);
+            ctx.drawImage(obstacleImage, obstacle3X, obstacle3Y, 50, 50);
 
             // Move fruits
             let speed = 4 + (score * 0.2);
