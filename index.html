@@ -3,8 +3,8 @@
     <title>Fruit Catching Game</title>
     <style>
     html{
-    padding: 0;
-    margin: 0;
+    padding: 0em;
+    margin: 0em;
     box-sizing: border-box;
 }
 canvas {
@@ -18,7 +18,7 @@ canvas {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
-    <canvas id="canvas" width="1920" height="900"></canvas>
+    <canvas id="canvas"></canvas>
     <script>
         // Create canvas
         let canvas = document.getElementById('canvas');
@@ -27,7 +27,7 @@ canvas {
 
         // Create basket
         let basketX = canvas.width / 2;
-        let basketY = canvas.height - 130;
+        let basketY = canvas.height - 120;
         let basketImage = new Image();
         basketImage.src = 'basket.png';
 
@@ -96,8 +96,8 @@ canvas {
             // Draw obstacles
             let obstacleImage = new Image();
             obstacleImage.src = 'obstacle.png';
-            ctx.drawImage(obstacleImage, obstacleX, obstacleY, 30, 30);
-            ctx.drawImage(obstacleImage, obstacle2X, obstacle2Y, 30, 30);
+            ctx.drawImage(obstacleImage, obstacleX, obstacleY, 40, 40);
+            ctx.drawImage(obstacleImage, obstacle2X, obstacle2Y, 40, 40);
 
             // Move fruits
             let speed = 4 + (score * 0.04);
