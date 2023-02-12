@@ -32,24 +32,16 @@ canvas {
         // Create fruits
         let fruitX = Math.random() * canvas.width;
         let fruitY = 0;
-        let fruitXimg = new Image();
-        fruitXimg.src = 'fruit.png';
         let fruit2X = Math.random() * canvas.width;
         let fruit2Y = 0;
-        let fruit2Ximg = new Image();
-        fruit2Ximg.src = 'fruit2.png';
         let fruit3X = Math.random() * canvas.width;
         let fruit3Y = 0;
-        let fruit3Ximg = new Image();
-        fruit3Ximg.src = 'fruit3.png';
 
         // Create obstacles
         let obstacleX = Math.random() * canvas.width;
         let obstacleY = 0;
         let obstacle2X = Math.random() * canvas.width;
         let obstacle2Y = 0;
-        let obstacle3X = Math.random() * canvas.width;
-        let obstacle3Y = 0;
 
         // Create variables
         let score = 0;
@@ -104,7 +96,6 @@ canvas {
             obstacleImage.src = 'obstacle.png';
             ctx.drawImage(obstacleImage, obstacleX, obstacleY, 30, 30);
             ctx.drawImage(obstacleImage, obstacle2X, obstacle2Y, 30, 30);
-            ctx.drawImage(obstacleImage, obstacle3X, obstacle3Y, 30, 30);
 
             // Move fruits
             let speed = 4 + (score * 0.04);
@@ -117,7 +108,6 @@ canvas {
             // Move obstacles
             obstacleY += 2.5 + (score * 0.04);
             obstacle2Y += 3 + (score * 0.04);
-            obstacle3Y += 3.5 + (score * 0.04);
 
             // Check if fruit is caught
             if (fruitX > basketX && fruitX < basketX + 100 && fruitY > basketY && fruitY < basketY + 50) {
@@ -147,11 +137,6 @@ canvas {
                 obstacle2X = Math.random() * canvas.width;
                 obstacle2Y = 0;
             }
-            if (obstacle3X > basketX && obstacle3X < basketX + 100 && obstacle3Y > basketY && obstacle3Y < basketY + 50) {
-                score-=3;
-                obstacle3X = Math.random() * canvas.width;
-                obstacle3Y = 0;
-            }
 
             // Check if fruit is out of bounds
             if (fruitY > canvas.height) {
@@ -175,10 +160,6 @@ canvas {
             if (obstacle2Y > canvas.height) {
                 obstacle2X = Math.random() * canvas.width;
                 obstacle2Y = 0;
-            }
-            if (obstacle3Y > canvas.height) {
-                obstacle3X = Math.random() * canvas.width;
-                obstacle3Y = 0;
             }
 
             // Check if time is 10 sec
