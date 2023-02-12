@@ -21,6 +21,8 @@ canvas {
     <script>
         // Create canvas
         let canvas = document.getElementById('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         // Create basket
         let basketX = canvas.width / 2;
@@ -56,10 +58,10 @@ canvas {
         // Move basket
         function moveBasket(e) {
             let touchX = e.clientX || e.changedTouches[0].clientX;
-            if (touchX < canvas.width / 2) {
+            if (touchX < canvas.width / 2 && basketX > 0) {
                 basketX -= 20;
             }
-            else {
+            else if (touchX > canvas.width / 2 && basketX < canvas.width - 100) {
                 basketX += 20;
             }
         }
