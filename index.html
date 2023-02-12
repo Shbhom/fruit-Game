@@ -91,17 +91,17 @@ canvas {
             ctx.drawImage(obstacleImage, obstacle3X, obstacle3Y, 30, 30);
 
             // Move fruits
-            let speed = 4 + (score * 0.2);
-            let speed2 = 5 + (score * 0.2);
-            let speed3 = 4 + (score * 0.2);
+            let speed = 4 + (score * 0.04);
+            let speed2 = 5 + (score * 0.04);
+            let speed3 = 4 + (score * 0.04);
             fruitY += speed;
             fruit2Y += speed2;
             fruit3Y += speed3;
 
             // Move obstacles
-            obstacleY += 2.5 + (score * 0.3);
-            obstacle2Y += 3 + (score * 0.3);
-            obstacle3Y += 3.5 + (score * 0.3);
+            obstacleY += 2.5 + (score * 0.04);
+            obstacle2Y += 3 + (score * 0.04);
+            obstacle3Y += 3.5 + (score * 0.04);
 
             // Check if fruit is caught
             if (fruitX > basketX && fruitX < basketX + 100 && fruitY > basketY && fruitY < basketY + 50) {
