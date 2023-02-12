@@ -25,7 +25,7 @@ canvas {
 
         // Create basket
         let basketX = canvas.width / 2;
-        let basketY = canvas.height - 100;
+        let basketY = canvas.height - 200;
         let basketImage = new Image();
         basketImage.src = 'basket.png';
 
@@ -99,39 +99,39 @@ canvas {
             fruit3Y += speed3;
 
             // Move obstacles
-            obstacleY += 2.5 + (score * 0.4);
-            obstacle2Y += 3 + (score * 0.4);
-            obstacle3Y += 3.5 + (score * 0.5);
+            obstacleY += 2.5 + (score * 0.3);
+            obstacle2Y += 3 + (score * 0.3);
+            obstacle3Y += 3.5 + (score * 0.3);
 
             // Check if fruit is caught
-            if (fruitX > basketX && fruitX < basketX + 50 && fruitY > basketY && fruitY < basketY + 50) {
+            if (fruitX > basketX && fruitX < basketX + 200 && fruitY > basketY && fruitY < basketY + 100) {
                 score += 2;
                 fruitX = Math.random() * canvas.width;
                 fruitY = 0;
             }
-            if (fruit2X > basketX && fruit2X < basketX + 50 && fruit2Y > basketY && fruit2Y < basketY + 50) {
-                score += 4;
+            if (fruit2X > basketX && fruit2X < basketX + 200 && fruit2Y > basketY && fruit2Y < basketY + 100) {
+                score += 3;
                 fruit2X = Math.random() * canvas.width;
                 fruit2Y = 0;
             }
-            if (fruit3X > basketX && fruit3X < basketX + 50 && fruit3Y > basketY && fruit3Y < basketY + 50) {
-                score += 6;
+            if (fruit3X > basketX && fruit3X < basketX + 200 && fruit3Y > basketY && fruit3Y < basketY + 100) {
+                score += 4;
                 fruit3X = Math.random() * canvas.width;
                 fruit3Y = 0;
             }
 
             // Check if obstacle is caught
-            if (obstacleX > basketX && obstacleX < basketX + 50 && obstacleY > basketY && obstacleY < basketY + 50) {
+            if (obstacleX > basketX && obstacleX < basketX + 200 && obstacleY > basketY && obstacleY < basketY + 100) {
                 score--;
                 obstacleX = Math.random() * canvas.width;
                 obstacleY = 0;
             }
-            if (obstacle2X > basketX && obstacle2X < basketX + 50 && obstacle2Y > basketY && obstacle2Y < basketY + 50) {
+            if (obstacle2X > basketX && obstacle2X < basketX + 200 && obstacle2Y > basketY && obstacle2Y < basketY + 100) {
                 score-=2;
                 obstacle2X = Math.random() * canvas.width;
                 obstacle2Y = 0;
             }
-            if (obstacle3X > basketX && obstacle3X < basketX + 50 && obstacle3Y > basketY && obstacle3Y < basketY + 50) {
+            if (obstacle3X > basketX && obstacle3X < basketX + 200 && obstacle3Y > basketY && obstacle3Y < basketY + 100) {
                 score-=3;
                 obstacle3X = Math.random() * canvas.width;
                 obstacle3Y = 0;
