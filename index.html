@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 canvas {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     max-width: 100%;
     max-height: 100%;
 }
@@ -25,17 +25,23 @@ canvas {
 
         // Create basket
         let basketX = canvas.width / 2;
-        let basketY = canvas.height - 100;
+        let basketY = canvas.height - 130;
         let basketImage = new Image();
         basketImage.src = 'basket.png';
 
         // Create fruits
         let fruitX = Math.random() * canvas.width;
         let fruitY = 0;
+        let fruitXimg = new Image();
+        fruitXimg.src = 'fruit.png';
         let fruit2X = Math.random() * canvas.width;
         let fruit2Y = 0;
+        let fruit2Ximg = new Image();
+        fruit2Ximg.src = 'fruit2.png';
         let fruit3X = Math.random() * canvas.width;
         let fruit3Y = 0;
+        let fruit3Ximg = new Image();
+        fruit3Ximg.src = 'fruit3.png';
 
         // Create obstacles
         let obstacleX = Math.random() * canvas.width;
@@ -64,6 +70,9 @@ canvas {
                 basketX += 20;
             }
         }
+            // Create background
+        let backgroundImage = new Image();
+        backgroundImage.src = 'back.jpg';
 
         // Draw on canvas
         function draw() {
@@ -72,16 +81,23 @@ canvas {
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // Draw background
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
             // Draw basket
-            ctx.drawImage(basketImage, basketX, basketY, 100, 100);
+            ctx.drawImage(basketImage, basketX, basketY, 130, 130);
 
             // Draw fruits
-            ctx.fillStyle = 'red';
-            ctx.fillRect(fruitX, fruitY, 30, 30);
-            ctx.fillStyle = 'green';
-            ctx.fillRect(fruit2X, fruit2Y, 30, 30);
-            ctx.fillStyle = 'yellow';
-            ctx.fillRect(fruit3X, fruit3Y, 30, 30);
+
+        let fruitXimg = new Image();
+        fruitXimg.src = 'fruit.png';
+        let fruit2Ximg = new Image();
+        fruit2Ximg.src = 'fruit2.png';
+        let fruit3Ximg = new Image();
+        fruit3Ximg.src = 'fruit3.png';
+        ctx.drawImage(fruitXimg, fruitX, fruitY, 50, 50);
+        ctx.drawImage(fruit2Ximg, fruit2X, fruit2Y, 50, 50);
+        ctx.drawImage(fruit3Ximg, fruit3X, fruit3Y, 50, 50);
 
             // Draw obstacles
             let obstacleImage = new Image();
