@@ -48,6 +48,7 @@ canvas {
         // Create variables
         let score = 0;
         let startTime = Date.now();
+        let coins=100;
 
         // Create event listener
         document.addEventListener('touchstart', moveBasket);
@@ -188,7 +189,7 @@ canvas {
                 document.body.appendChild(popup);
                 let closeBtn = popup.querySelector('button');
                 closeBtn.addEventListener('click', function() {
-                    document.body.removeChild(popup);
+                    window.postMessage({ coins }, '*');
                 });
                 return;
             }
