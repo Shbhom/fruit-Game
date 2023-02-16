@@ -36,18 +36,21 @@
         basketImage.src = 'basket.png';
 
         // Create fruits
-        let fruitX = Math.random() * canvas.width;
+        let fruitX = Math.random() * (canvas.width - 50);
         let fruitY = 0;
-        let fruit2X = Math.random() * canvas.width;
+        let fruit2X = Math.random() * (canvas.width-50);
         let fruit2Y = 0;
-        let fruit3X = Math.random() * canvas.width;
+        let fruit3X = Math.random() * (canvas.width-50);
         let fruit3Y = 0;
 
         // Create obstacles
-        let obstacleX = Math.random() * canvas.width;
+        let obstacleX = Math.random() * (canvas.width-50);
         let obstacleY = 0;
-        let obstacle2X = Math.random() * canvas.width;
+        let obstacle2X = Math.random() * (canvas.width-50);
         let obstacle2Y = 0;
+
+
+
 
         // Create variables
         let score = 0;
@@ -63,10 +66,10 @@
         function moveBasket(e) {
             let touchX = e.clientX || e.changedTouches[0].clientX;
             if (touchX < canvas.width / 2 && basketX > 0) {
-                basketX -= 20;
+                basketX -= 5;
             }
             else if (touchX > canvas.width / 2 && basketX < canvas.width - 100) {
-                basketX += 20;
+                basketX += 5;
             }
         }
             // Create background
@@ -118,29 +121,29 @@
             obstacle2Y += 3 + (score * 0.04);
 
             // Check if fruit is caught
-            if (fruitX > basketX && fruitX < basketX + 100 && fruitY > basketY && fruitY < basketY + 230) {
+            if (fruitX > basketX && fruitX < basketX + 130 && fruitY > basketY && fruitY < basketY + 230) {
                 score += 2;
                 fruitX = Math.random() * canvas.width;
                 fruitY = 0;
             }
-            if (fruit2X > basketX && fruit2X < basketX + 100 && fruit2Y > basketY && fruit2Y < basketY+ 230) {
+            if (fruit2X > basketX && fruit2X < basketX + 130 && fruit2Y > basketY && fruit2Y < basketY+ 230) {
                 score += 3;
                 fruit2X = Math.random() * canvas.width;
                 fruit2Y = 0;
             }
-            if (fruit3X > basketX && fruit3X < basketX + 100 && fruit3Y > basketY && fruit3Y < basketY+ 230) {
+            if (fruit3X > basketX && fruit3X < basketX + 130 && fruit3Y > basketY && fruit3Y < basketY+ 230) {
                 score += 4;
                 fruit3X = Math.random() * canvas.width;
                 fruit3Y = 0;
             }
 
             // Check if obstacle is caught
-            if (obstacleX > basketX && obstacleX < basketX + 100 && obstacleY > basketY && obstacleY < basketY + 50) {
+            if (obstacleX > basketX && obstacleX < basketX + 130 && obstacleY > basketY && obstacleY < basketY + 230) {
                 score--;
                 obstacleX = Math.random() * canvas.width;
                 obstacleY = 0;
             }
-            if (obstacle2X > basketX && obstacle2X < basketX + 100 && obstacle2Y > basketY && obstacle2Y < basketY + 50) {
+            if (obstacle2X > basketX && obstacle2X < basketX + 130 && obstacle2Y > basketY && obstacle2Y < basketY + 230) {
                 score-=2;
                 obstacle2X = Math.random() * canvas.width;
                 obstacle2Y = 0;
@@ -188,16 +191,24 @@
                     <div style="width: 500px; height: 300px; background: white; padding: 30px; text-align: center; font-family: sans-serif; box-shadow: 0px 0px 10px #444;">
                         <h2>Bruhh time over!!</h2>
                         <p>Your score is ${score}.</p>
-                        <button>Close</button>
+                        <button id="close">Close</button>
+                        <button id="restart">Restart</button>
                     </div>
                 `;
                 document.body.appendChild(popup);
-                let closeBtn = popup.querySelector('button');
+                let closeBtn = popup.querySelector('#close');
+                let restartBtn = popup.querySelector('#restart');
                 closeBtn.addEventListener('click', function() {
                     console.log(window.postMessage(score,'*'))
-                    window.parent.postMessage(coins, '*');
-                    window.close();
-                    // document.body.removeChild(popup);
+                    // window.parent.postMessage(coins, '*');
+                    // window.close();
+                    document.body.removeChild(popup);
+                });
+                restartBtn.addEventListener('click', function() {
+                    document.body.removeChild(popup);
+                    score=0;
+                    startTime = Date.now();
+                    draw();
                 });
                 return;
             }
