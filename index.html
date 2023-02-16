@@ -6,14 +6,18 @@
     padding: 0em;
     margin: 0em;
     box-sizing: border-box;
-}
-canvas {
-    padding: 0em;
-    margin: 0em;
-    /* border: 1px solid black; */
-    max-width: 100%;
-    max-height: 100%;
-}
+    }
+    body{
+        padding: 0em;
+        margin: 0em;
+    }
+    canvas {
+        padding: 0em;
+        margin: 0em;
+        /* border: 1px solid black; */
+        max-width: 100%;
+        max-height: 100%;
+    }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
@@ -27,7 +31,7 @@ canvas {
 
         // Create basket
         let basketX = canvas.width / 2;
-        let basketY = canvas.height - 120;
+        let basketY = canvas.height - 60;
         let basketImage = new Image();
         basketImage.src = 'basket.png';
 
@@ -67,7 +71,7 @@ canvas {
         }
             // Create background
         let backgroundImage = new Image();
-        backgroundImage.src = 'back.jpg';
+        backgroundImage.src = 'back.png';
 
         // Draw on canvas
         function draw() {
@@ -79,27 +83,28 @@ canvas {
             // Draw background
             ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
-            // Draw basket
-            ctx.drawImage(basketImage, basketX, basketY, 130, 130);
-
+            
             // Draw fruits
-
-        let fruitXimg = new Image();
-        fruitXimg.src = 'fruit.png';
-        let fruit2Ximg = new Image();
-        fruit2Ximg.src = 'fruit2.png';
-        let fruit3Ximg = new Image();
-        fruit3Ximg.src = 'fruit3.png';
-        ctx.drawImage(fruitXimg, fruitX, fruitY, 50, 50);
-        ctx.drawImage(fruit2Ximg, fruit2X, fruit2Y, 50, 50);
-        ctx.drawImage(fruit3Ximg, fruit3X, fruit3Y, 50, 50);
-
+            
+            let fruitXimg = new Image();
+            fruitXimg.src = 'fruit.png';
+            let fruit2Ximg = new Image();
+            fruit2Ximg.src = 'fruit2.png';
+            let fruit3Ximg = new Image();
+            fruit3Ximg.src = 'fruit3.png';
+            ctx.drawImage(fruitXimg, fruitX, fruitY, 50, 50);
+            ctx.drawImage(fruit2Ximg, fruit2X, fruit2Y, 50, 50);
+            ctx.drawImage(fruit3Ximg, fruit3X, fruit3Y, 50, 50);
+            
             // Draw obstacles
             let obstacleImage = new Image();
             obstacleImage.src = 'obstacle.png';
             ctx.drawImage(obstacleImage, obstacleX, obstacleY, 40, 40);
             ctx.drawImage(obstacleImage, obstacle2X, obstacle2Y, 40, 40);
-
+            
+            // Draw basket
+            ctx.drawImage(basketImage, basketX, basketY, 120, 50);
+            
             // Move fruits
             let speed = 4 + (score * 0.04);
             let speed2 = 5 + (score * 0.04);
@@ -113,17 +118,17 @@ canvas {
             obstacle2Y += 3 + (score * 0.04);
 
             // Check if fruit is caught
-            if (fruitX > basketX && fruitX < basketX + 100 && fruitY > basketY && fruitY < basketY + 50) {
+            if (fruitX > basketX && fruitX < basketX + 100 && fruitY > basketY && fruitY < basketY + 230) {
                 score += 2;
                 fruitX = Math.random() * canvas.width;
                 fruitY = 0;
             }
-            if (fruit2X > basketX && fruit2X < basketX + 100 && fruit2Y > basketY && fruit2Y < basketY + 50) {
+            if (fruit2X > basketX && fruit2X < basketX + 100 && fruit2Y > basketY && fruit2Y < basketY+ 230) {
                 score += 3;
                 fruit2X = Math.random() * canvas.width;
                 fruit2Y = 0;
             }
-            if (fruit3X > basketX && fruit3X < basketX + 100 && fruit3Y > basketY && fruit3Y < basketY + 50) {
+            if (fruit3X > basketX && fruit3X < basketX + 100 && fruit3Y > basketY && fruit3Y < basketY+ 230) {
                 score += 4;
                 fruit3X = Math.random() * canvas.width;
                 fruit3Y = 0;
@@ -168,7 +173,7 @@ canvas {
             // Check if time is 10 sec
             let currentTime = Date.now();
             let elapsedTime = currentTime - startTime;
-            if (elapsedTime >= 10000) {
+            if (elapsedTime >= 20000) {
                 let popup = document.createElement('div');
                 popup.style.position = 'absolute';
                 popup.style.left = 0;
@@ -191,8 +196,8 @@ canvas {
                 closeBtn.addEventListener('click', function() {
                     console.log(window.postMessage(score,'*'))
                     window.parent.postMessage(coins, '*');
-                    document.body.removeChild(popup);
                     window.close();
+                    // document.body.removeChild(popup);
                 });
                 return;
             }
