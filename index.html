@@ -168,7 +168,7 @@ canvas {
             // Check if time is 10 sec
             let currentTime = Date.now();
             let elapsedTime = currentTime - startTime;
-            if (elapsedTime >= 50000) {
+            if (elapsedTime >= 10000) {
                 let popup = document.createElement('div');
                 popup.style.position = 'absolute';
                 popup.style.left = 0;
@@ -189,7 +189,10 @@ canvas {
                 document.body.appendChild(popup);
                 let closeBtn = popup.querySelector('button');
                 closeBtn.addEventListener('click', function() {
-                    window.postMessage({ coins }, '*');
+                    console.log(window.postMessage(score,'*'))
+                    window.parent.postMessage(coins, '*');
+                    document.body.removeChild(popup);
+                    window.close();
                 });
                 return;
             }
