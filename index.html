@@ -64,10 +64,10 @@
         function moveBasket(e) {
             let touchX = e.clientX || e.changedTouches[0].clientX;
             if (touchX < canvas.width / 2 && basketX > 0) {
-                basketX -= 5;
+                basketX -= 10;
             }
             else if (touchX > canvas.width / 2 && basketX < canvas.width - 100) {
-                basketX += 5;
+                basketX += 10;
             }
         }
             // Create background
@@ -197,7 +197,6 @@
                 let closeBtn = popup.querySelector('#close');
                 let restartBtn = popup.querySelector('#restart');
                 closeBtn.addEventListener('click', function() {
-                    console.log(window.postMessage(score,'*'))
                     // window.parent.postMessage(coins, '*');
                     // window.close();
                     document.body.removeChild(popup);
