@@ -64,10 +64,10 @@
         function moveBasket(e) {
             let touchX = e.clientX || e.changedTouches[0].clientX;
             if (touchX < canvas.width / 2 && basketX > 0) {
-                basketX -= 10;
+                basketX -= 13;
             }
             else if (touchX > canvas.width / 2 && basketX < canvas.width - 100) {
-                basketX += 10;
+                basketX += 13;
             }
         }
             // Create background
