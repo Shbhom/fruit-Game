@@ -199,8 +199,8 @@
                 let closeBtn = popup.querySelector('#close');
                 let restartBtn = popup.querySelector('#restart');
                 closeBtn.addEventListener('click', function() {
-                    // window.parent.postMessage(coins, '*');
-                    // window.close();
+                    window.parent.postMessage(coins, '*');
+                    window.close();
                     document.body.removeChild(popup);
                 });
                 restartBtn.addEventListener('click', function() {
