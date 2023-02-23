@@ -11,32 +11,32 @@ let basketImage = new Image();
 basketImage.src = './img/basket.png';
 
 //create scoreBoard
-let scoreX= (canvas.width - 110);
-let scoreY= 20;
-let scoreImg= new Image();
-scoreImg.src= './img/scoreBoard.png'
-let scoreTextX=(canvas.width - 50)
-let scoreTextY= 50
+let scoreX = (canvas.width - 110);
+let scoreY = 20;
+let scoreImg = new Image();
+scoreImg.src = './img/scoreBoard.png'
+let scoreTextX = (canvas.width - 50)
+let scoreTextY = 50
 
 // Create fruits
 let fruitX = Math.random() * (canvas.width - 50);
 let fruitY = 0;
-let fruit2X = Math.random() * (canvas.width-50);
+let fruit2X = Math.random() * (canvas.width - 50);
 let fruit2Y = 0;
-let fruit3X = Math.random() * (canvas.width-50);
+let fruit3X = Math.random() * (canvas.width - 50);
 let fruit3Y = 0;
 
 // Create obstacles
-let obstacleX = Math.random() * (canvas.width-50);
+let obstacleX = Math.random() * (canvas.width - 50);
 let obstacleY = 0;
-let obstacle2X = Math.random() * (canvas.width-50);
+let obstacle2X = Math.random() * (canvas.width - 50);
 let obstacle2Y = 0;
 
 
 // Create variables
 let score = 0;
 let startTime = Date.now();
-let coins=100;
+let coins = 100;
 
 // Create event listener
 document.addEventListener('touchstart', backButton);
@@ -45,8 +45,8 @@ document.addEventListener('touchstart', moveBasket);
 document.addEventListener('touchend', moveBasket);
 document.addEventListener('touchmove', moveBasket);
 
-backButton.addEventListener('click',()=>{
-  window.close();
+backButton.addEventListener('click', () => {
+    window.close();
 })
 
 // Move basket
@@ -59,7 +59,7 @@ function moveBasket(e) {
         basketX += 13;
     }
 }
-    // Create background
+// Create background
 let backgroundImage = new Image();
 backgroundImage.src = './img/back.png';
 
@@ -76,10 +76,10 @@ function draw() {
     // ctx.drawImage(backBtnImg,backBtnX,backBtnY,20,20);
 
     //draw score Board button
-    ctx.drawImage(scoreImg,scoreX,scoreY,100,45);
-    ctx.font='20px Broadway'
-    ctx.fillText(score,scoreTextX,scoreTextY)
-    
+    ctx.drawImage(scoreImg, scoreX, scoreY, 100, 45);
+    ctx.font = '20px Broadway'
+    ctx.fillText(score, scoreTextX, scoreTextY)
+
     // Draw fruits
     let fruitXimg = new Image();
     fruitXimg.src = './img/fruit.png';
@@ -90,7 +90,7 @@ function draw() {
     ctx.drawImage(fruitXimg, fruitX, fruitY, 50, 50);
     ctx.drawImage(fruit2Ximg, fruit2X, fruit2Y, 50, 50);
     ctx.drawImage(fruit3Ximg, fruit3X, fruit3Y, 50, 50);
-    
+
     // Draw obstacles
     let obstacle1Image = new Image();
     obstacle1Image.src = './img/obstacle1.png';
@@ -98,10 +98,10 @@ function draw() {
     obstacle2Image.src = './img/obstacle2.png';
     ctx.drawImage(obstacle1Image, obstacleX, obstacleY, 40, 40);
     ctx.drawImage(obstacle2Image, obstacle2X, obstacle2Y, 40, 40);
-    
+
     // Draw basket
     ctx.drawImage(basketImage, basketX, basketY, 120, 50);
-    
+
     // Move fruits
     let speed = 4 + (score * 0.04);
     let speed2 = 5 + (score * 0.04);
@@ -120,12 +120,12 @@ function draw() {
         fruitX = Math.random() * canvas.width;
         fruitY = 0;
     }
-    if (fruit2X > basketX && fruit2X < basketX + 130 && fruit2Y > basketY && fruit2Y < basketY+ 230) {
+    if (fruit2X > basketX && fruit2X < basketX + 130 && fruit2Y > basketY && fruit2Y < basketY + 230) {
         score += 3;
         fruit2X = Math.random() * canvas.width;
         fruit2Y = 0;
     }
-    if (fruit3X > basketX && fruit3X < basketX + 130 && fruit3Y > basketY && fruit3Y < basketY+ 230) {
+    if (fruit3X > basketX && fruit3X < basketX + 130 && fruit3Y > basketY && fruit3Y < basketY + 230) {
         score += 4;
         fruit3X = Math.random() * canvas.width;
         fruit3Y = 0;
@@ -138,7 +138,7 @@ function draw() {
         obstacleY = 0;
     }
     if (obstacle2X > basketX && obstacle2X < basketX + 130 && obstacle2Y > basketY && obstacle2Y < basketY + 230) {
-        score-=2;
+        score -= 2;
         obstacle2X = Math.random() * canvas.width;
         obstacle2Y = 0;
     }
@@ -172,39 +172,38 @@ function draw() {
     let elapsedTime = currentTime - startTime;
     if (elapsedTime >= 10000) {
         let endCard = document.createElement('div');
-        endCard.innerHTML=`
+        endCard.innerHTML = `
         <div class="notifContainer">
             <div class="notifWin">
-            <h2>Congratulations !!</h2>
-            <h3 class="notif-content">You guessed the </h3>
-            <br />
-            <br />
-            <div class="scoreNotifContainer">
-                <img src="./img/coinsSymbol.png" alt="" class="notifCoin" />
-                <p>${score}.</p>
-            </div>
-            <br />
-            <br />
-            <div class="notifBtn">
-                <button class="close-btn">
-                <img src="./img/home.png" alt="" />
-                </button>
-                <button class="reset-btn">
-                <img src="./img/restart.png" alt="" />
-                </button>
-            </div>
+                     <div class="notifHead">
+                            <h3 class="notif-content">Game Over!! </h3>
+                             <h2>Congratulations</h2>
+                                 <br/>
+                     </div>
+                <div class="scoreNotifContainer">
+                        <img src="./img/coinsSymbol.png" alt="" class="notifCoin" />
+                            <p>${score}</p>
+                 </div>
+                 <div class="notifBtn">
+                        <button class="close-btn">
+                        <img src="./img/home.png" alt="" />
+                            </button>
+                        <button class="reset-btn">
+                        <img src="./img/restart.png" alt="" />
+                     </button>
+                 </div>
             </div>
         </div>`;
         document.body.appendChild(endCard);
         const closeButton = document.querySelector('.close-btn');
         const resetButton = document.querySelector('.reset-btn');
-        closeButton.addEventListener('click', function() {
+        closeButton.addEventListener('click', function () {
             window.parent.postMessage(coins, '*');
             window.close();
         });
-        resetButton.addEventListener('click', function() {
+        resetButton.addEventListener('click', function () {
             document.body.removeChild(endCard);
-            score=0;
+            score = 0;
             startTime = Date.now();
             draw();
         });

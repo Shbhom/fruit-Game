@@ -1,12 +1,20 @@
-html{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
     padding: 0em;
     margin: 0em;
     box-sizing: border-box;
 }
-body{
+
+body {
     padding: 0em;
     margin: 0em;
 }
+
 canvas {
     padding: 0em;
     margin: 0em;
@@ -49,6 +57,10 @@ canvas {
     justify-content: center;
     align-items: center;
     background: url(./img/back.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 /* win screen */
@@ -57,29 +69,26 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding-top: 3%;
     /* background: #fc6c85; */
     /* width: 20rem; */
     /* padding: 20px 10px; */
     /* border-radius: 4px; */
     /* box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2); */
     background: url(./img/winScreen.png);
-    width: 22rem;
-    height: 31.4rem;
+    width: 22.9rem;
+    height: 22.9rem;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* border: 2px solid red; */
 }
 
-.notifWin h2,
-h3,
-h4 {
-    font-size: 1rem;
-    font-family: Broadway;
-}
+
 
 .notifBtn {
     display: flex;
@@ -98,7 +107,7 @@ h4 {
 }
 
 .scoreNotifContainer {
-    width: 13.14rem;
+    width: 10.14rem;
     height: 4.3rem;
     background: linear-gradient(0deg, #EDD6B9 0%, #D4B492 99.95%);
     background-blend-mode: multiply;
@@ -115,7 +124,16 @@ h4 {
     height: 3rem;
 }
 
-.notifScore {
+.scoreNotifContainer p {
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: Broadway;
+    text-align: center;
+    text-transform: capitalize;
+    color: #AD5B00;
+}
+
+.notifScore p {
     font-size: 2.5rem;
     font-weight: 400;
     font-family: Broadway;
@@ -137,4 +155,22 @@ h4 {
     background: none;
     border: none;
     outline: none;
+}
+
+.notifHead {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 30%;
+    overflow: hidden;
+}
+
+.notifHead h2,
+h3,
+h4 {
+    font-size: 1.8rem;
+    font-size: 1.8rem;
+    font-family: Broadway;
+    color: #AD5B00;
 }
