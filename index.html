@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
     <title>Fruit Catching Game</title>
+
+    <!-- fonts -->
+    <link
+    href="https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap"
+    rel="stylesheet"/>
+    <link href="https://fonts.cdnfonts.com/css/broadway" rel="stylesheet" />
+
     <style>
     html{
     padding: 0em;
@@ -18,22 +25,165 @@
         max-width: 100%;
         max-height: 100%;
     }
+
+  .navigationContainer {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    /* justify-content: space-between; */
+    /* border: 2px solid green; */
+    align-items: center;
+  }
+
+  .navigationContainer button {
+    margin-left: 4%;
+    background: none;
+    border: none;
+    outline: none;
+    /* margin-top: 2.1%; */
+  }
+
+    .hidden {
+    display: none;
+    }
+
+    .notifContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./img/back.png);
+  }
+
+  /* win screen */
+  .notifWin {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background: #fc6c85; */
+    /* width: 20rem; */
+    /* padding: 20px 10px; */
+    /* border-radius: 4px; */
+    /* box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2); */
+    background: url(./img/winScreen.png);
+    width: 22rem;
+    height: 31.4rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .notifWin h2,
+  h3,
+  h4 {
+    font-size: 1rem;
+    font-family: Broadway;
+  }
+
+  .notifBtn {
+    display: flex;
+    margin-top: 1rem;
+    /* border: 2px solid red; */
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .notifBtn button {
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  .scoreNotifContainer {
+    width: 13.14rem;
+    height: 4.3rem;
+    background: linear-gradient(0deg, #EDD6B9 0%, #D4B492 99.95%);
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .notifCoin {
+    width: 4.5rem;
+    height: 3rem;
+  }
+
+  .notifScore {
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: Broadway;
+    text-align: center;
+    text-transform: capitalize;
+    color: #AD5B00;
+  }
+
+  .notifBtn {
+    display: flex;
+    /* border: 2px solid red; */
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .notifBtn button {
+    background: none;
+    border: none;
+    outline: none;
+  }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
+  <div class="navigationContainer">
+    <button class="back-btn"><img src="./img/backBtn.png" alt="" /></button>
+</div>
     <canvas id="canvas"></canvas>
     <script>
-        // Create canvas
-        let canvas = document.getElementById('canvas');
+       let canvas = document.getElementById('canvas');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        
+        let backButton = document.querySelector('.back-btn')
 
         // Create basket
         let basketX = canvas.width / 2;
         let basketY = canvas.height - 60;
         let basketImage = new Image();
-        basketImage.src = 'basket.png';
+        basketImage.src = './img/basket.png';
+
+        //create backButton
+        // let backBtnX= 40;
+        // let backBtnY=30;
+        // let backBtnImg= new Image();
+        // backBtnImg.src='./img/backBtn.png'
+
+        //create scoreBoard
+        let scoreX= (canvas.width - 110);
+        let scoreY= 20;
+        let scoreImg= new Image();
+        scoreImg.src= './img/scoreBoard.png'
+        let scoreTextX=(canvas.width - 50)
+        let scoreTextY= 50
 
         // Create fruits
         let fruitX = Math.random() * (canvas.width - 50);
@@ -56,9 +206,14 @@
         let coins=100;
 
         // Create event listener
+        document.addEventListener('touchstart', backButton);
+        document.addEventListener('touchend', backButton);
         document.addEventListener('touchstart', moveBasket);
         document.addEventListener('touchend', moveBasket);
         document.addEventListener('touchmove', moveBasket);
+        backButton.addEventListener('click',()=>{
+          window.close();
+        })
 
         // Move basket
         function moveBasket(e) {
@@ -72,7 +227,7 @@
         }
             // Create background
         let backgroundImage = new Image();
-        backgroundImage.src = 'back.png';
+        backgroundImage.src = './img/back.png';
 
         // Draw on canvas
         function draw() {
@@ -80,28 +235,33 @@
 
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             // Draw background
             ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
+            //draw back button
+            // ctx.drawImage(backBtnImg,backBtnX,backBtnY,20,20);
+
+            //draw score Board button
+            ctx.drawImage(scoreImg,scoreX,scoreY,100,45);
+            ctx.font='20px Broadway'
+            ctx.fillText(score,scoreTextX,scoreTextY)
             
             // Draw fruits
-            
             let fruitXimg = new Image();
-            fruitXimg.src = 'fruit.png';
+            fruitXimg.src = './img/fruit.png';
             let fruit2Ximg = new Image();
-            fruit2Ximg.src = 'fruit2.png';
+            fruit2Ximg.src = './img/fruit2.png';
             let fruit3Ximg = new Image();
-            fruit3Ximg.src = 'fruit3.png';
+            fruit3Ximg.src = './img/fruit3.png';
             ctx.drawImage(fruitXimg, fruitX, fruitY, 50, 50);
             ctx.drawImage(fruit2Ximg, fruit2X, fruit2Y, 50, 50);
             ctx.drawImage(fruit3Ximg, fruit3X, fruit3Y, 50, 50);
             
             // Draw obstacles
             let obstacle1Image = new Image();
-            obstacle1Image.src = 'obstacle1.png';
+            obstacle1Image.src = './img/obstacle1.png';
             let obstacle2Image = new Image();
-            obstacle2Image.src = 'obstacle2.png';
+            obstacle2Image.src = './img/obstacle2.png';
             ctx.drawImage(obstacle1Image, obstacleX, obstacleY, 40, 40);
             ctx.drawImage(obstacle2Image, obstacle2X, obstacle2Y, 40, 40);
             
@@ -176,35 +336,40 @@
             // Check if time is 10 sec
             let currentTime = Date.now();
             let elapsedTime = currentTime - startTime;
-            if (elapsedTime >= 20000) {
-                let popup = document.createElement('div');
-                popup.style.position = 'absolute';
-                popup.style.left = 0;
-                popup.style.right = 0;
-                popup.style.top = 0;
-                popup.style.bottom = 0;
-                popup.style.background = 'rgba(0,0,0,0.7)';
-                popup.style.display = 'flex';
-                popup.style.justifyContent = 'center';
-                popup.style.alignItems = 'center';
-                popup.innerHTML = `
-                    <div style="width: 500px; height: 300px; background: white; padding: 30px; text-align: center; font-family: sans-serif; box-shadow: 0px 0px 10px #444;">
-                        <h2>Bruhh time over!!</h2>
-                        <p>Your score is ${score}.</p>
-                        <button id="close">Close</button>
-                        <button id="restart">Restart</button>
+            if (elapsedTime >= 10000) {
+                let endCard = document.createElement('div');
+                endCard.innerHTML=`
+                <div class="notifContainer">
+                    <div class="notifWin">
+                    <h2>Congratulations !!</h2>
+                    <h3 class="notif-content">You guessed the </h3>
+                    <br />
+                    <br />
+                    <div class="scoreNotifContainer">
+                        <img src="./img/coinsSymbol.png" alt="" class="notifCoin" />
+                        <p>${score}.</p>
                     </div>
-                `;
-                document.body.appendChild(popup);
-                let closeBtn = popup.querySelector('#close');
-                let restartBtn = popup.querySelector('#restart');
-                closeBtn.addEventListener('click', function() {
+                    <br />
+                    <br />
+                    <div class="notifBtn">
+                        <button class="close-btn">
+                        <img src="./img/home.png" alt="" />
+                        </button>
+                        <button class="reset-btn">
+                        <img src="./img/restart.png" alt="" />
+                        </button>
+                    </div>
+                    </div>
+                </div>`;
+                document.body.appendChild(endCard);
+                const closeButton = document.querySelector('.close-btn');
+                const resetButton = document.querySelector('.reset-btn');
+                closeButton.addEventListener('click', function() {
                     window.parent.postMessage(coins, '*');
                     window.close();
-                    document.body.removeChild(popup);
                 });
-                restartBtn.addEventListener('click', function() {
-                    document.body.removeChild(popup);
+                resetButton.addEventListener('click', function() {
+                    document.body.removeChild(endCard);
                     score=0;
                     startTime = Date.now();
                     draw();
@@ -212,10 +377,6 @@
                 return;
             }
 
-            // Draw score
-            ctx.fillStyle = 'black';
-            ctx.font = '20px Arial';
-            ctx.fillText('Score: ' + score, 10, 40);
             // Call draw function
             requestAnimationFrame(draw);
         }
