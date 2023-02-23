@@ -1,0 +1,140 @@
+html{
+    padding: 0em;
+    margin: 0em;
+    box-sizing: border-box;
+}
+body{
+    padding: 0em;
+    margin: 0em;
+}
+canvas {
+    padding: 0em;
+    margin: 0em;
+    /* border: 1px solid black; */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.navigationContainer {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    /* justify-content: space-between; */
+    /* border: 2px solid green; */
+    align-items: center;
+}
+
+.navigationContainer button {
+    margin-left: 4%;
+    background: none;
+    border: none;
+    outline: none;
+    /* margin-top: 2.1%; */
+}
+
+.hidden {
+    display: none;
+}
+
+.notifContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./img/back.png);
+}
+
+/* win screen */
+.notifWin {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background: #fc6c85; */
+    /* width: 20rem; */
+    /* padding: 20px 10px; */
+    /* border-radius: 4px; */
+    /* box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2); */
+    background: url(./img/winScreen.png);
+    width: 22rem;
+    height: 31.4rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notifWin h2,
+h3,
+h4 {
+    font-size: 1rem;
+    font-family: Broadway;
+}
+
+.notifBtn {
+    display: flex;
+    margin-top: 1rem;
+    /* border: 2px solid red; */
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notifBtn button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.scoreNotifContainer {
+    width: 13.14rem;
+    height: 4.3rem;
+    background: linear-gradient(0deg, #EDD6B9 0%, #D4B492 99.95%);
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.notifCoin {
+    width: 4.5rem;
+    height: 3rem;
+}
+
+.notifScore {
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: Broadway;
+    text-align: center;
+    text-transform: capitalize;
+    color: #AD5B00;
+}
+
+.notifBtn {
+    display: flex;
+    /* border: 2px solid red; */
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notifBtn button {
+    background: none;
+    border: none;
+    outline: none;
+}
