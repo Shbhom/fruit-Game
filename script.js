@@ -53,10 +53,10 @@ backButton.addEventListener('click',()=>{
 function moveBasket(e) {
     let touchX = e.clientX || e.changedTouches[0].clientX;
     if (touchX < canvas.width / 2 && basketX > 0) {
-        basketX -= 13;
+        basketX -= 10;
     }
     else if (touchX > canvas.width / 2 && basketX < canvas.width - 100) {
-        basketX += 13;
+        basketX += 10;
     }
 }
     // Create background
@@ -176,7 +176,6 @@ function draw() {
         <div class="notifContainer">
             <div class="notifWin">
             <h2>Congratulations !!</h2>
-            <h3 class="notif-content">You guessed the </h3>
             <br />
             <br />
             <div class="scoreNotifContainer">
