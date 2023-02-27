@@ -41,10 +41,6 @@ canvas {
     /* margin-top: 2.1%; */
 }
 
-.hidden {
-    display: none;
-}
-
 .notifContainer {
     position: fixed;
     top: 0;
@@ -173,4 +169,42 @@ h4 {
     font-size: 1.8rem;
     font-family: Broadway;
     color: #AD5B00;
+}
+
+.rulesContainer{
+    display: flex;
+    flex-direction: column;
+    background-image: url(./img/back.png);
+}
+
+.rules{
+    position: relative;
+    height: 30rem;
+    width: 20rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 30%);
+    z-index: 1;
+}
+
+.rulesContainer p{
+    position: relative;
+    z-index: 5;
+    width: 15rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+}
+
+.play{
+    position: relative;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%,-300%);
+    width: 10rem;
+}
+
+.hidden {
+    display: none;
 }

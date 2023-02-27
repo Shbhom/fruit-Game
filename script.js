@@ -3,6 +3,9 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let backButton = document.querySelector('.back-btn')
+let playButton = document.querySelector('.play')
+let Rules = document.querySelector('.rulesContainer')
+
 
 // Create basket
 let basketX = canvas.width / 2;
@@ -44,6 +47,7 @@ document.addEventListener('touchend', backButton);
 document.addEventListener('touchstart', moveBasket);
 document.addEventListener('touchend', moveBasket);
 document.addEventListener('touchmove', moveBasket);
+document.addEventListener('click',startGame);
 
 backButton.addEventListener('click', () => {
     window.close();
@@ -58,6 +62,13 @@ function moveBasket(e) {
     else if (touchX > canvas.width / 2 && basketX < canvas.width - 100) {
         basketX += 10;
     }
+}
+
+function startGame(){
+    Rules.classList.add('hidden');
+    playButton.classList.add('hidden');
+    canvas.classList.remove('hidden');
+    draw();
 }
 // Create background
 let backgroundImage = new Image();
@@ -214,4 +225,4 @@ function draw() {
     requestAnimationFrame(draw);
 }
 // Call draw function
-draw();
+// draw();
