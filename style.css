@@ -24,7 +24,7 @@ canvas {
 }
 
 .navigationContainer {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     height: 10vh;
     display: flex;
@@ -171,13 +171,40 @@ h4 {
     color: #AD5B00;
 }
 
-.rulesContainer{
-    display: flex;
-    flex-direction: column;
+.bodyContainer {
+    width: 100vw;
+    height: 100vh;
     background-image: url(./img/back.png);
+    background-size: cover;
+    background-position: center;
+    /* border: 2px solid red; */
 }
 
-.rules{
+.outerRules {
+    margin-top: 10vh;
+    width: 80vw;
+    height: 50vh;
+    margin-left: 10vw;
+    background: url(./UI/Group.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rulesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    margin: auto;
+    height: 60%;
+    /* border: 2px solid blue; */
+    justify-content: space-around;
+}
+
+.rules {
     position: relative;
     height: 30rem;
     width: 20rem;
@@ -187,22 +214,22 @@ h4 {
     z-index: 1;
 }
 
-.rulesContainer p{
-    position: relative;
-    z-index: 5;
-    width: 15rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -90%);
+.rulesContainer p {
+    font-size: 1rem;
+    padding: 3%;
+    text-align: center;
 }
 
-.play{
-    position: relative;
+.play {
+    /* position: relative;
     z-index: 5;
     top: 50%;
     left: 50%;
-    transform: translate(-60%,-300%);
-    width: 10rem;
+    transform: translate(-60%, -300%);
+    width: 10rem; */
+    background: none;
+    border: none;
+    outline: none;
 }
 
 .hidden {

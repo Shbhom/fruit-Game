@@ -6,6 +6,8 @@ canvas.height = window.innerHeight;
 let backButton = document.querySelector(".back-btn");
 let playButton = document.querySelector(".play");
 let Rules = document.querySelector(".rulesContainer");
+let outerRules = document.querySelector(".outerRules");
+let navigationContainer = document.querySelector(".navigationContainer");
 
 // Create basket
 let basketX = canvas.width / 2;
@@ -64,6 +66,8 @@ function moveBasket(e) {
 
 function startGame() {
   Rules.classList.add("hidden");
+  outerRules.classList.add("hidden");
+  navigationContainer.classList.add("hidden");
   playButton.classList.add("hidden");
   canvas.classList.remove("hidden");
   draw();
